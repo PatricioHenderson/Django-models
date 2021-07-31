@@ -11,7 +11,7 @@ services:
     volumes:
       # Aquí se enlaza el contenido de dentro del contenedor con el directorio en nuestra PC
       # de esa manera lo que guardemos en la base de datos va a quedar accesible en nuestra carpeta.
-      - ./database:/var/lib/postgresql/data
+      - database:/var/lib/postgresql/data
 
     environment:
       # Postgres nos exige que establezcamos un usuario por defecto, esto se hace por medio
@@ -59,3 +59,6 @@ services:
     tty: true
     
     command: python marvel/manage.py runserver 0.0.0.0:8000
+volumes:
+    database:
+       external: true
